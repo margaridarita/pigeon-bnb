@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+html {
+  height: 100%;
+}
+
 .body {
   background-color:  #F7F6F5;
 }
