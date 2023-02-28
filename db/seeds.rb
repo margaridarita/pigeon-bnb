@@ -16,5 +16,3 @@ user_2 = User.create(email: "margarida.bel.rita@gmail.com", password: "pombinho2
 10.times do
   Pigeon.create(name: Faker::Name.name, available: true, description: Faker::Quote.yoda, price_per_day: rand(5..20), user_id: user_1.id)
 end
-
-
