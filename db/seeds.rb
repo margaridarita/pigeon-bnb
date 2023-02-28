@@ -21,3 +21,5 @@ user2 = User.create(username: "pombito",email: "pombito@gmail.com", password: "p
     p booking.id
   end
 end
+
+
