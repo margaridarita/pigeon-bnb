@@ -2,4 +2,6 @@
 <p><%= @booking.start_date %>-<%= @booking.end_date %></p>
 <p>Owner: <%= @pigeon.user.username %></p>
 <h2>€<%= @booking.total_price %></h2>
+<h2><%= @booking.end_date %></h2>
+<h2><%= @booking.start_date %></h2>
 <%= link_to "Back to #{@pigeon.name}", pigeon_path(@pigeon.id) %>

@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.pigeon = @pigeon
     @booking.user = current_user
-    @booking.total_price = @pigeon.price_per_day * (@booking.end_date - @booking.start_date)
+    @booking.total_price = @booking.total_price_calc
     if @booking.save
       redirect_to pigeon_booking_path(@pigeon, @booking)
     else
