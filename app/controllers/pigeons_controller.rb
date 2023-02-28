@@ -4,6 +4,9 @@ class PigeonsController < ApplicationController
     @pigeons = Pigeon.all
   end
 
+  def show
+  end
+  
   def new
     @pigeon = Pigeon.new
   end

@@ -1,1 +1,9 @@
-@pigeons
+<%= render "shared/navbar" %>
+
+<div class="cards">
+  <% @pigeons.each do |pigeon| %>
+      <div class="card">
+        <%= link_to pigeon.name, pigeon_path(pigeon)%>
+      </div>
+  <% end %>
+</div>
