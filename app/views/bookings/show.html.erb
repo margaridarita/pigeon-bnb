@@ -1,1 +1,5 @@
-<h1>Shows booking controller</h1>
+<h1>Your booking with <%= @pigeon.name %></h1>
+<p><%= @booking.start_date %>-<%= @booking.end_date %></p>
+<p>Owner: <%= @pigeon.user.username %></p>
+<h2>€<%= @booking.total_price %></h2>
+<%= link_to "Back to #{@pigeon.name}", pigeon_path(@pigeon.id) %>

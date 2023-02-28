@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show]
-  def show; end
+  def show
+    @pigeon = Pigeon.find(params[:pigeon_id])
+  end
 
   def new
     @booking = Booking.new
