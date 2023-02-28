@@ -5,6 +5,10 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
+  def total_price_calc
+    ((end_date - start_date) / 60 / 60 / 24) * pigeon.price_per_day
+  end
+
   private
 
   def end_date_after_start_date
