@@ -4,3 +4,4 @@
 <p><strong><%=@pigeon.price_per_day %> €</strong> /day</p>
 
 <%= link_to "< All pigeons", pigeons_path %>
+<%= link_to "< New booking", new_pigeon_booking_path(@pigeon.id) %>
