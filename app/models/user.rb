@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
+  has_many :pigeons, dependent: :destroy
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :pigeons
   has_many :bookings
