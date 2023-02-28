@@ -1,0 +1,16 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>List a new pigeon</h3>
+        <%= simple_form_for @pigeon do |f| %>
+          <%= f.input :name, placeholder: 'Pigeon name' %>
+          <%= f.input :description, placeholder: 'Description' %>
+          <%= f.input :available, placeholder: 'True or False' %>
+          <%= f.input :price_per_day, placeholder: 'Price' %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
