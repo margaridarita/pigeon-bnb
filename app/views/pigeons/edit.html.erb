@@ -1,0 +1,19 @@
+<div class="h-100 green-bg">
+  <div class="container pt-5 pl-3">
+    <%= link_to "< Back", root_path, style:"color:#FFFFFF" %>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-3">
+        <div class="bg-white rounded p-4 shadow">
+          <h3 class="pb-2"> Edit your Pigeon, <%= @pigeon.name %></h3>
+          <%= simple_form_for @pigeon do |f| %>
+            <%= f.input :name, placeholder: @pigeon.name %>
+            <%= f.input :description, placeholder: @pigeon.description %>
+            <%= f.input :available, placeholder: @pigeon.available %>
+            <%= f.input :price_per_day, placeholder: @pigeon.price_per_day %>
+            <%= f.submit class: 'btn btn-flat' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

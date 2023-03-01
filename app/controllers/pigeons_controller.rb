@@ -1,12 +1,11 @@
 class PigeonsController < ApplicationController
-  before_action :set_pigeon, only: [:show]
+  before_action :set_pigeon, only: %i[show edit update]
 
   def index
     @pigeons = Pigeon.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @pigeon = Pigeon.new
@@ -21,6 +20,13 @@ class PigeonsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit; end
+
+  def update
+    @pigeon.update(pigeon_params)
+    redirect_to pigeon_path(@pigeon.id)
   end
 
   private
