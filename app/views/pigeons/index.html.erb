@@ -3,7 +3,7 @@
     <% @pigeons.each do |pigeon| %>
     <%= link_to pigeon_path(pigeon), style:"color:black" do %>
       <div class="card">
-        <%= image_tag("https://images.unsplash.com/photo-1513099335611-0fd3bca7131c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=390&q=80", class:"pigeon-img") %>
+        <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
         <h2 class="title"><strong><%= pigeon.name %></strong></h2>
         <span class="price"><%= pigeon.price_per_day %>€ /day</span>
       </div>
