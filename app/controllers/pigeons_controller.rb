@@ -1,5 +1,5 @@
 class PigeonsController < ApplicationController
-  before_action :set_pigeon, only: %i[show edit update]
+  before_action :set_pigeon, only: %i[show edit update destroy]
 
   def index
     @pigeons = Pigeon.all
@@ -29,6 +29,11 @@ class PigeonsController < ApplicationController
   def update
     @pigeon.update(pigeon_params)
     redirect_to pigeon_path(@pigeon.id)
+  end
+
+  def destroy
+    @pigeon.destroy
+    redirect_to pigeons_path, status: :see_other
   end
 
   private

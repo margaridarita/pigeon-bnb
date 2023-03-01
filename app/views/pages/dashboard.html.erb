@@ -1,0 +1,39 @@
+<div class="container pt-5 pl-3">
+  <h1><%= @user.username %>'s dashboard</h1>
+  <div class="d-flex flex-row justify-content-between">
+    <div class="d-flex flex-column w-75">
+      <div class="dash-card">
+      <h2>Bookings</h2>
+        <% if @user.bookings.exists? %>
+          <% 5.times do %>
+            <% b = @user.bookings.sample %>
+            <p class="pb-2"><%= link_to "Your #{b.start_date.strftime("%d %B, %Y")} booking with #{b.pigeon.name}", booking_path(b) %></p>
+          <% end %>
+          <div>
+          <%= link_to "See more", my_bookings_path %>
+          </div>
+        <% else %>
+          <p>Oh no! Looks like you haven't booked any pigeons yet! Click <%= link_to "here", pigeons_path %> to discover our available pigeons.</p>
+        <% end %>
+        </div>
+
+      <div class="dash-card">
+      <h2>Pigeons</h2>
+      <% if @user.pigeons.exists? %>
+         <% 5.times do %>
+            <% p = @user.pigeons.sample %>
+          <p class="pb-2"><%= link_to "#{p.name}", pigeon_path(p) %></p>
+          <% end %>
+          <div>
+          <%= link_to "See more", my_pigeons_path %>
+          </div>
+        <% else %>
+        <p>Oh no! Looks like you haven't listed any pigeons yet! Click <%= link_to "here", new_pigeon_path %> to list your first pigeon.</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="dash-card w-25">
+      <h2>My Account</h2>
+    </div>
+  </div>
+</div>
