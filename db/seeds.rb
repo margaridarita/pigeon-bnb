@@ -11,7 +11,7 @@ require "faker"
 User.destroy_all
 
 user1 = User.create(username: "pombo", email: "pombo@gmail.com", password: "pombinho222")
-user2 = User.create(username: "pombito",email: "pombito@gmail.com", password: "pombinho222")
+user2 = User.create(username: "pombito", email: "pombito@gmail.com", password: "pombinho222")
 
 10.times do
   pigeon = Pigeon.create(name: Faker::Name.first_name, available: true, description: Faker::Compass.direction, price_per_day: rand(5..20), user_id: user1.id)
