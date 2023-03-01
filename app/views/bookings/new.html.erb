@@ -1,13 +1,15 @@
-<div class="container pt-5 pl-3 green-bg">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h3>New booking</h3>
-        <%= simple_form_for [@pigeon, @booking] do |f| %>
-          <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
-          <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
-          <%= f.submit class: 'btn btn-flat' %>
-        <% end %>
+<div class="h-100 green-bg">
+  <div class="container pt-5 pl-3">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-3">
+        <div class="bg-white rounded p-4 shadow">
+          <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
+          <%= simple_form_for [@pigeon, @booking] do |f| %>
+            <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
+            <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+            <%= f.submit class: 'btn btn-flat' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

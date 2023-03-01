@@ -1,0 +1,26 @@
+.img-resize {
+  flex: auto;
+  justify-content: center;
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+  height: width;
+  box-shadow: 2px 2px 5px lightgrey;
+  border-radius: 3px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.card-white {
+  justify-content: center;
+  width: 75%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px darkgrey;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+}

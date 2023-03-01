@@ -1,14 +1,14 @@
-<div class="container pt-5 pl-3">
+<div class="container pt-5 pl-3 green-bg m-5">
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>List a new pigeon</h3>
+        <h3>List a pigeon</h3>
         <%= simple_form_for @pigeon do |f| %>
-          <%= f.input :name, placeholder: 'Pigeon name' %>
-          <%= f.input :description, placeholder: 'Description' %>
-          <%= f.input :available, placeholder: 'True or False' %>
-          <%= f.input :price_per_day, placeholder: 'Price' %>
-          <%= f.submit class: 'btn btn-blue' %>
+          <%= f.input :name, placeholder: 'First and last name' %>
+          <%= f.input :description %>
+          <%= f.input :available %>
+          <%= f.input :price_per_day, placeholder: 'Includes VAT' %>
+          <%= f.submit class: '' %>
         <% end %>
       </div>
     </div>
