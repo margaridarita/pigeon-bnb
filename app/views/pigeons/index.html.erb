@@ -1,14 +1,13 @@
-<ul>
+<div class="grid-container">
   <% @pigeons.each do |pigeon| %>
-    <li><%= link_to pigeon.name, pigeon_path(pigeon)%></li>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1513099335611-0fd3bca7131c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=390&q=80">
+      <h2 class="title"><%= pigeon.name %></h2>
+      <span class="price"><%= pigeon.price_per_day %> €</span>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+<div class="button-green">
+  <%= link_to "Meet our pigeons", pigeons_path, class:"button-green" %>
 </div>
