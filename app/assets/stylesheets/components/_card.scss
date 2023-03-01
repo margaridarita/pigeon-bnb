@@ -48,7 +48,8 @@
  }
 
  .card:hover {
-  border: 1px solid #D55959;
+  // border: 1px solid #587368;
+  box-shadow: 0 3px 10px #587368 (0 0 0 / 0.2);
   transform: scale(1.05);
  }
 
