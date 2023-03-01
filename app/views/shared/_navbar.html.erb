@@ -11,19 +11,19 @@
     <div class="bar">
       <div class="location">
         <p>Location</p>
-        <input type="text" placeholder="Where is the pigeon going?">
+        <input class="input" type="text" placeholder="Where is the pigeon going?">
       </div>
       <div class="date">
             <p>Date</p>
-        <input type="text" placeholder="Add date">
+        <input class="input" type="text" placeholder="Add date">
       </div>
       <div class="end-date">
             <p>End date</p>
-        <input type="text" placeholder="Add end date">
+        <input class="input" type="text" placeholder="Add end date">
       </div>
       <div class="search">
         <%= link_to "/pigeons" do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
         <% end %>
       </div>
     </div>
