@@ -7,7 +7,7 @@
           <h3 class="pb-2"> List a Pigeon </h3>
           <%= simple_form_for @pigeon do |f| %>
             <%= f.input :name, placeholder: 'First and last name' %>
-            <%= f.input :description %>
+            <%= f.input :description, placeholder: 'Skills and speciality' %>
             <%= f.input :available %>
             <%= f.input :price_per_day, placeholder: 'Includes VAT' %>
             <%= f.submit class: 'btn btn-flat' %>
