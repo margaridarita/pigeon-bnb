@@ -1,4 +1,4 @@
-#button-green {
+.button-green {
   text-decoration: none;
   background-color: #587368;
   color: white;
@@ -10,6 +10,13 @@
   width: 180px;
   margin: 40px;
   text-align: center;
+  transition-duration: 0.4s;
+}
+
+.button-green:hover {
+  color: #587368;
+  background-color: white;
+  border: 1px solid #587368;
 }
 
 .buttons-container {
