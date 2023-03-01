@@ -3,19 +3,7 @@
   <%= link_to "< All pigeons", pigeons_path, style:"color:#587368" %>
 
 
-<div class="row">
-  <div class="col-6">
-    <h1 class="mt-5"><%= @pigeon.name %></h1>
-    <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> day</p>
-
-    <p class="mt-4"><%= @pigeon.description %></p>
-
-    <div class="button-green ms-0">
-      <%= link_to "New booking", new_pigeon_booking_path(@pigeon.id), class: 'btn btn-flat' %>
-    </div>
-  </div>
-
-
+<div class="row pt-4">
   <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,6 +30,20 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-</div>
 
+  <div class="col-6">
+    <h1 class="mt-4"><%= @pigeon.name %></h1>
+    <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> /day</p>
+
+    <p class="mt-4"><%= @pigeon.description %></p>
+  <div class="pt-5">
+  <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
+          <%= simple_form_for [@pigeon, @booking] do |f| %>
+            <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
+            <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+            <%= f.submit class: 'btn btn-flat' %>
+          <% end %>
+  </div>
+  </div>
+</div>
 </div>
