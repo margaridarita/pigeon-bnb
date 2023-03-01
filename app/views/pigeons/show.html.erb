@@ -1,3 +1,9 @@
+<div class="container pt-5 pl-3">
+  <h1><%= @pigeon.name %></h1>
+  <p><%= @pigeon.description %></p>
+  <p><strong><%=@pigeon.price_per_day %> €</strong> /day</p>
+
+  <%= link_to "< New booking", new_pigeon_booking_path(@pigeon.id), class: 'btn btn-flat' %>
 
 <h1><%= @pigeon.name %></h1>
 <p><%= @pigeon.description %></p>
