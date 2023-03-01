@@ -3,12 +3,12 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
         <h3>List a pigeon</h3>
-        <%= simple_form_for [@pigeon] do |f| %>
-          <%= f.input :name, as: :string, placeholder: 'First and last name' %>
-          <%= f.input :description, as: :text, placeholder: 'Skills and qualities' %>
+        <%= simple_form_for @pigeon do |f| %>
+          <%= f.input :name, placeholder: 'First and last name' %>
+          <%= f.input :description %>
           <%= f.input :available %>
           <%= f.input :price_per_day, placeholder: 'Includes VAT' %>
-          <%= f.submit class: 'btn btn-flat' %>
+          <%= f.submit class: '' %>
         <% end %>
       </div>
     </div>
