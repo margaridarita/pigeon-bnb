@@ -2,8 +2,11 @@
   <div class="container pt-5 pl-3">
     <div class="card-white">
     <div class="d-flex justify-content-between">
-      <h1 class="pt-2">Your booking with <%= @booking.pigeon.name %></h1>
-      <%= link_to "Edit booking", edit_booking_path, style:"color:#587368" %>
+      <h1 class="pt-2">Your booking with <%= @booking.pigeon.name %> is confirmed.</h1>
+      <div class="d-flex flex-column">
+        <p><%= link_to "Edit booking", edit_booking_path, style:"color:#587368" %></p>
+        <p><%= link_to "Delete booking", booking_path, style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      </div>
     </div>
       <p class="pt-3"><%= @booking.start_date.strftime("%d %b, %Y") %>  -  <%= @booking.end_date.strftime("%d %b, %Y") %></p>
       <img src="https://media2.giphy.com/media/GyKCVW91R83Ek/giphy.gif" class="img-resize">

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update]
+  before_action :set_booking, only: %i[show edit update destroy]
   before_action :set_pigeon, only: %i[new create]
 
   def show
@@ -29,6 +29,11 @@ class BookingsController < ApplicationController
     @booking.total_price = @booking.total_price_calc
     @booking.save
     redirect_to booking_path(@booking)
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
