@@ -1,4 +1,5 @@
 <div class="container pt-5 pl-3">
+
   <%= link_to "< All pigeons", pigeons_path, style:"color:#587368" %>
   <div class="row pt-4">
     <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
@@ -26,6 +27,25 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
+=======
+
+
+  <%= link_to "< Back", :back, style:"color:#587368" %>
+
+<div class="row pt-4">
+  <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+    <% @pigeon.photos.count.times do |index| %>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Pigeon"></button>
+    <% end %>
+    </div>
+    <div class="carousel-inner">
+      <% @pigeon.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item<%= ' active' if index == 0 %>">
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"d-block w-100", id:"our-carousel-image" %>
+        </div>
+      <% end %>
+
     </div>
     <div class="col-6">
       <h1 class="mt-4"><%= @pigeon.name %></h1>
@@ -40,6 +60,7 @@
     <% end %>
   </div>
 </div>
+
 
 <h3 class="pb-2">Add a Review</h3>
 <%= simple_form_for [@pigeon, @review] do |f| %>
@@ -160,3 +181,30 @@
         </div>
       <% end %>
 </section>
+=======
+  <div class="col-6">
+    <h1 class="mt-4"><%= @pigeon.name %></h1>
+    <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> day</p>
+    <p class="mt-4"><%= @pigeon.description %></p>
+    
+    <div class="justify-content-end">
+    <% if @pigeon.user == current_user %>
+      <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
+      <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
+    <% end %>
+    </div>
+  <div class="pt-5">
+  <% unless @pigeon.user == current_user %>
+  <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
+          <%= simple_form_for [@pigeon, @booking] do |f| %>
+            <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
+            <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+            <%= f.submit class: 'btn btn-flat' %>
+          <% end %>
+    <% end %>
+    </div>
+  </div>
+
+  </div>
+</div>
+
