@@ -60,16 +60,24 @@
   <div class="col-6">
     <h1 class="mt-4"><%= @pigeon.name %></h1>
     <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> /day</p>
-
     <p class="mt-4"><%= @pigeon.description %></p>
+    <div class="justify-content-end">
+    <% if @pigeon.user == current_user %>
+      <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
+      <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
+    <% end %>
+    </div>
   <div class="pt-5">
+  <% unless @pigeon.user == current_user %>
   <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
           <%= simple_form_for [@pigeon, @booking] do |f| %>
             <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
             <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
             <%= f.submit class: 'btn btn-flat' %>
           <% end %>
+    <% end %>
+    </div>
   </div>
+
   </div>
-</div>
 </div>
