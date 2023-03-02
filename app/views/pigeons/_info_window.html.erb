@@ -1,3 +1,7 @@
-<h2><%= pigeon.name %></h2>
-<p><%= pigeon.address %></p>
-<p><strong>€<%= pigeon.price_per_day %></strong> day</p>
+<%=link_to pigeon_path(pigeon) do%>
+  <div class="info-window">
+    <h2><%= pigeon.name %></h2>
+    <p><%= pigeon.address %></p>
+    <p><strong>€<%= pigeon.price_per_day %></strong> day</p>
+  </div>
+<% end %>
