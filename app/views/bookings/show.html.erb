@@ -1,11 +1,16 @@
 <div class="green-bg h-100">
   <div class="container pt-5 pl-3">
+    <%= link_to "< Back", :back, style:"color:#587368" %>
     <div class="card-white">
     <div class="d-flex justify-content-between">
       <h1 class="pt-2">Your booking with <%= @booking.pigeon.name %> is confirmed.</h1>
       <div class="d-flex flex-column">
-        <p><%= link_to "Edit booking", edit_booking_path, style:"color:#587368" %></p>
-        <p><%= link_to "Delete booking", booking_path, style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      <% unless @booking.start_date <= Date.today %>
+        <% if @booking.user == current_user || @booking.pigeon.user == current_user%>
+          <p><%= link_to "Edit booking", edit_booking_path, style:"color:#587368" %></p>
+          <p><%= link_to "Delete booking", booking_path(@booking), style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+        <% end %>
+      <% end %>
       </div>
     </div>
       <p class="pt-3"><%= @booking.start_date.strftime("%d %b, %Y") %>  -  <%= @booking.end_date.strftime("%d %b, %Y") %></p>
