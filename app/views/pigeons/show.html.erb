@@ -41,34 +41,122 @@
   </div>
 </div>
 
-<h5 class="pb-4">Add a Review</h5>
+<h3 class="pb-2">Add a Review</h3>
 <%= simple_form_for [@pigeon, @review] do |f| %>
   <strong><%= f.input :rating, collection: (0..5) %></strong>
   <strong><%= f.input :content %></strong>
   <%= f.submit %>
 <% end %>
 
-<h5 class="pb-4">All Reviews</h5>
-<div class="review-list">
-  <% @pigeon.reviews.each do |r| %>
-    <ul>
-      <li>
-        <div class="d-flex">
-          <div class="left">
-              <div class="right">
-                <h5>
-                  <%= r.user.username %>
-                  <span class="gig-rating text-body-2">
-                  <%= r.rating %>
-                  </span>
-                </h5>
-                <p>
-                  <%= r.content %>
-                </p>
+
+
+<section id="testimonials">
+  <div class="testimonial-heading">
+    <span>Reviews</span>
+  </div>
+    <% @pigeon.reviews.each do |r| %>
+        <!--testimonials-box-container------>
+        <div class="testimonial-box-container">
+            <!--BOX-1-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="images/c-1.jpg" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong><%= r.user.username %></strong>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p><%= r.content %></p>
+                </div>
             </div>
-          </div>
+            <!--BOX-2-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="images/c-2.jpg" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong><%= r.user.username %></strong>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p><%= r.content %></p>
+                </div>
+            </div>
+            <!--BOX-3-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="images/c-3.jpg" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong><%= r.user.username %></strong>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p><%= r.content %></p>
+                </div>
+            </div>
+            <!--BOX-4-------------->
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="images/c-4.jpg" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong><%= r.user.username %></strong>
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <div class="reviews">
+                        <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
+                    </div>
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p><%= r.content %></p>
+                </div>
+            </div>
         </div>
-      </li>
-    </ul>
-  <% end %>
-</div>
+      <% end %>
+</section>
