@@ -13,11 +13,11 @@ User.destroy_all
 user1 = User.create(username: "pombo", email: "pombo@gmail.com", password: "pombinho222")
 user2 = User.create(username: "pombito", email: "pombito@gmail.com", password: "pombinho222")
 
-10.times do
-  pigeon = Pigeon.create(name: Faker::Name.first_name, available: true, description: Faker::Compass.direction, price_per_day: rand(5..20), user_id: user1.id)
-  p pigeon.id
-  5.times do
-    booking = Booking.create(start_date: '01/01/2022', end_date: '02/01/2022', total_price: pigeon.price_per_day, pigeon_id: pigeon.id, user_id: user2.id)
-    p booking.id
-  end
-end
+# 10.times do
+#   pigeon = Pigeon.create(name: Faker::Name.first_name, available: true, description: Faker::Compass.direction, price_per_day: rand(5..20), user_id: user1.id)
+#   p pigeon.id
+#   5.times do
+#     booking = Booking.create(start_date: '01/01/2022', end_date: '02/01/2022', total_price: pigeon.price_per_day, pigeon_id: pigeon.id, user_id: user2.id)
+#     p booking.id
+#   end
+# end

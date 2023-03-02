@@ -3,8 +3,11 @@
     <% @pigeons.each do |pigeon| %>
     <%= link_to pigeon_path(pigeon), style:"color:black" do %>
       <div class="card">
-        <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
-        <h2 class="title"><strong><%= pigeon.name %></strong></h2>
+      <% if pigeon.photos.attached? %>
+        <%= cl_image_tag pigeon.photos.first.key, height: 190, width: 240, crop: :fill %>
+        <%# WHEN UPDATING THE CARDS, MAKE THE PHOTO FIT IT. I SUGGEST CARD FROM SECOND FRONT-END LIVE CODE %>
+      <% end %>
+      <h2 class="title"><strong><%= pigeon.name %></strong></h2>
         <span class="price"><%= pigeon.price_per_day %>€ /day</span>
       </div>
       <% end %>
