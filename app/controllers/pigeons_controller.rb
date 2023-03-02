@@ -1,5 +1,5 @@
 class PigeonsController < ApplicationController
-  before_action :set_pigeon, only: %i[show edit update destroy]
+  before_action :set_pigeon, only: %i[show edit update destroy available?]
 
   def index
     @pigeons = Pigeon.all
@@ -34,6 +34,10 @@ class PigeonsController < ApplicationController
   def destroy
     @pigeon.destroy
     redirect_to my_pigeons_path, status: :see_other
+  end
+
+  def available?
+    @pigeon.available
   end
 
   private
