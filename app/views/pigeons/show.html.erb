@@ -42,7 +42,7 @@
     <div class="justify-content-end">
     <% if @pigeon.user %>
       <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
-      <p class="d-inline p-2"><%= link_to "Delete", my_pigeons_path(@pigeon),  style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      <p class="d-inline p-2"><%= link_to "Delete", my_pigeons_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
     <% end %>
     </div>
   <div class="pt-5">
