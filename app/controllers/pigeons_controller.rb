@@ -3,6 +3,13 @@ class PigeonsController < ApplicationController
 
   def index
     @pigeons = Pigeon.all
+
+    @markers = @pigeons.geocoded.map do |pigeon|
+      {
+        lat: pigeon.latitude,
+        lng: pigeon.longitude
+      }
+    end
   end
 
   def show
