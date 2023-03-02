@@ -5,9 +5,9 @@
       <h1 class="pt-2">Your booking with <%= @booking.pigeon.name %> is confirmed.</h1>
       <div class="d-flex flex-column">
       <% unless @booking.start_date <= Date.today %>
-        <% if @booking.user%>
+        <% if @booking.user == current_user %>
           <p><%= link_to "Edit booking", edit_booking_path, style:"color:#587368" %></p>
-          <p><%= link_to "Delete booking", booking_path, style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+          <p><%= link_to "Delete booking", booking_path(@booking), style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
         <% end %>
       <% end %>
       </div>
