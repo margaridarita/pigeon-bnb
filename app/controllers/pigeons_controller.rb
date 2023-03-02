@@ -4,10 +4,11 @@ class PigeonsController < ApplicationController
   def index
     @pigeons = Pigeon.all
 
-    @markers = @pigeons.geocoded.map do |pigeon|
-      {
+    @markers = @pigeons.geocoded.map do |pigeon| {
         lat: pigeon.latitude,
-        lng: pigeon.longitude
+        lng: pigeon.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {pigeon: pigeon}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
