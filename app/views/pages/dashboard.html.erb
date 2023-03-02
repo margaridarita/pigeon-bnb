@@ -6,7 +6,7 @@
         <div class="dash-card p-4">
         <h2 class="pb-3">Bookings</h2>
           <% if @user.bookings.exists? %>
-            <% @user.bookings.sample(5).each do %>
+            <% @user.bookings.sample(5).each do |b|%>
               <p class="pb-2"><%= link_to "Your #{b.start_date.strftime("%d %B, %Y")} booking with #{b.pigeon.name}", booking_path(b) %></p>
             <% end %>
             <div>
