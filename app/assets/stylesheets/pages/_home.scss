@@ -1,3 +1,22 @@
 @import "components/banner";
 @import "components/footer";
 @import "components/button";
+
+// .home-text-container {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+
+.info-container {
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  column-gap: 10px;
+  color: #8A8D96;
+}

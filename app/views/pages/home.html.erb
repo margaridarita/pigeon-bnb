@@ -1,11 +1,36 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1635699522347-50b5b12070b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80);">
+<div class="banner">
   <div class="container">
-    <h1>Le Pigeon</h1>
-    <p>Pigeon up your life!</p>
+    <h1>Pigeon up your life!</h1>
+    <p>Choose a skilled pigeon to book from our vast list of categories</p>
   </div>
+
+   <img src="<%= asset_path('banner_img.png') %>"/>
 </div>
 
-<div class="buttons-container">
-  <%= link_to "Book a pigeon", pigeons_path, class:"button-green" %>
-  <%= link_to "Rent your pigeon", new_pigeon_path, class:"button-green" %>
+<div class="info-container">
+  <div class="row">
+    <div class="col-6">
+      <div class="buttons-container">
+        <%= link_to "Book a pigeon", pigeons_path, class:"button-green" %>
+      </div>
+      <div class="home-text-container">
+        <div class="home-text">
+          <p>Get to know all the available pigeons for a specific category. The presence of a pigeon make any moment memorable!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="buttons-container">
+        <%= link_to "Rent your pigeon", new_pigeon_path, class:"button-green" %>
+      </div>
+      <div class="home-text-container">
+        <div class="home-text">
+          <p>Know all the benefits of renting a pigeon. Define a category, upload a picture, describe your pigeon, and get ready to earn some good money!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
