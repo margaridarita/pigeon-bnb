@@ -14,7 +14,10 @@ user1 = User.create(username: "pombo", email: "pombo@gmail.com", password: "pomb
 user2 = User.create(username: "pombito", email: "pombito@gmail.com", password: "pombinho222")
 
 10.times do
+
+  pigeon = Pigeon.create(name: Faker::Name.first_name, available: true, description: Faker::Creature::Bird.order, price_per_day: rand(5..20), user_id: user1.id)
   pigeon = Pigeon.create(name: Faker::Name.first_name, available: true, description: Faker::Compass.direction, price_per_day: rand(5..20), user_id: user1.id, address: "Conde Redondo, Lisboa")
+
   p pigeon.id
   5.times do
     booking = Booking.create(start_date: '01/01/2022', end_date: '02/01/2022', total_price: pigeon.price_per_day, pigeon_id: pigeon.id, user_id: user2.id)
