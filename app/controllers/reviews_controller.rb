@@ -12,8 +12,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.pigeon = @pigeon
-    @review.save
-    redirect_to pigeon_path(@pigeon)
+    @review.user = current_user
+
+    if @review.save
+      redirect_to pigeon_path(@pigeon)
+    else
+      redirect_to pigeon_path(@pigeon), status: :unprocessable_entity
+    end
   end
 
   private

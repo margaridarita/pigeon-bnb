@@ -41,9 +41,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_113843) do
     t.integer "rating"
     t.text "content"
     t.bigint "pigeon_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pigeon_id"], name: "index_reviews_on_pigeon_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,4 +65,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_113843) do
   add_foreign_key "bookings", "users"
   add_foreign_key "pigeons", "users"
   add_foreign_key "reviews", "pigeons"
+  add_foreign_key "reviews", "users"
 end

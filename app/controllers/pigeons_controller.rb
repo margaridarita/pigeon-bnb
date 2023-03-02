@@ -7,7 +7,7 @@ class PigeonsController < ApplicationController
 
   def show
     @booking = Booking.new
-    @reviews = @pigeon.reviews
+    @review = Review.new
   end
 
   def new
