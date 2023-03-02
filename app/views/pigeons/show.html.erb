@@ -46,7 +46,7 @@
     <% end %>
     </div>
   <div class="pt-5">
-  <% unless @pigeon.user %>
+  <% unless @pigeon.user == current_user %>
   <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
           <%= simple_form_for [@pigeon, @booking] do |f| %>
             <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
