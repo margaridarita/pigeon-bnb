@@ -6,20 +6,16 @@
 <div class="row pt-4">
   <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <% @pigeon.photos.count.times do |index| %>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Pigeon"></button>
+    <% end %>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1592964377969-dc564e4c1599?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1592964378097-281cab4a12a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGlnZW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1604082668028-1373f1071a07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-      </div>
+      <% @pigeon.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item<%= ' active' if index == 0 %>">
+          <%= cl_image_tag photo.key %>
+        </div>
+      <% end %>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
