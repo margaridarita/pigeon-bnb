@@ -29,8 +29,9 @@
 
   <div class="col-6">
     <h1 class="mt-4"><%= @pigeon.name %></h1>
-    <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> /day</p>
+    <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> day</p>
     <p class="mt-4"><%= @pigeon.description %></p>
+    
     <div class="justify-content-end">
     <% if @pigeon.user == current_user %>
       <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
