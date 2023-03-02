@@ -35,6 +35,10 @@ class PigeonsController < ApplicationController
 
   def edit; end
 
+  def map
+    @action_name = "map"
+  end
+
   def update
     @pigeon.update(pigeon_params)
     redirect_to pigeon_path(@pigeon.id)
