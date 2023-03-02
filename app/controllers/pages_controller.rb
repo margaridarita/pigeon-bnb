@@ -12,6 +12,7 @@ class PagesController < ApplicationController
         @sum += bt.total_price
       end
     end
+    #@user.bookings.sort_by(:start_date)
   end
 
   def my_pigeons; end
