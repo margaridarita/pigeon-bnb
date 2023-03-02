@@ -8,8 +8,6 @@
           <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
           <h2 class="title"><strong><%= pigeon.name %></strong></h2>
         </div>
-          <p><%= link_to "Edit", edit_pigeon_path(pigeon), style:"color:#587368" %></p>
-          <p><%= link_to "Delete", my_pigeons_path(pigeon),  style:"color:#587368", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
         <% end %>
       <% end %>
     </div>
