@@ -3,22 +3,19 @@
   <%= link_to "< Back", :back, style:"color:#587368" %>
 
   <div class="row pt-4">
+
     <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <% @pigeon.photos.count.times do |index| %>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Pigeon"></button>
+        <% end %>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1592964377969-dc564e4c1599?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1592964378097-281cab4a12a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGlnZW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1604082668028-1373f1071a07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" class="d-block w-100" id="our-carousel-image" alt="...">
-        </div>
+        <% @pigeon.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item<%= ' active' if index == 0 %>">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"d-block w-100", id:"our-carousel-image" %>
+          </div>
+        <% end %>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,59 +25,44 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-
-      <div class="row pt-4">
-        <div id="carouselExampleIndicators" class="carousel slide col-6" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <% @pigeon.photos.count.times do |index| %>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Pigeon"></button>
-            <% end %>
-          </div>
-          <div class="carousel-inner">
-            <% @pigeon.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item<%= ' active' if index == 0 %>">
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"d-block w-100", id:"our-carousel-image" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </div>
+
     <div class="col-6">
       <h1 class="mt-4"><%= @pigeon.name %></h1>
       <p class="price"><strong>€ <%=@pigeon.price_per_day %></strong> /day</p>
       <p class="mt-4"><%= @pigeon.description %></p>
-
-      <div class="justify-content-end">
-        <% if @pigeon.user == current_user %>
-          <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
-          <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
-        <% end %>
-      </div>
-
-      <% unless @pigeon.user == current_user %>
-    <div class="pt-5">
-      <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
-    <%= simple_form_for [@pigeon, @booking] do |f| %>
-      <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
-      <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
-      <%= f.submit class: 'btn btn-flat' %>
-    <% end %>
-  </div>
-  
-</div>
-    <div>
-    <h3 class="pb-2">Add a Review</h3>
-    <%= simple_form_for [@pigeon, @review] do |f| %>
-      <strong><%= f.input :rating, collection: (0..5) %></strong>
-      <strong><%= f.input :content %></strong>
-      <%= f.submit %>
-    <% end %>
     </div>
+
+    <div class="justify-content-end">
+      <% if @pigeon.user == current_user %>
+        <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
+        <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
+      <% end %>
+    </div>
+
+    <% unless @pigeon.user == current_user %>
+      <div class="pt-5">
+        <h3 class="pb-2">New booking with <%= @pigeon.name %></h3>
+        <%= simple_form_for [@pigeon, @booking] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
+          <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+     </div>
+    <% end %>
+
+    <div>
+      <h3 class="pb-2">Add a Review</h3>
+      <%= simple_form_for [@pigeon, @review] do |f| %>
+        <strong><%= f.input :rating, collection: (0..5) %></strong>
+        <strong><%= f.input :content %></strong>
+        <%= f.submit %>
+      <% end %>
+    </div>
+
+  </div>
+
 </div>
-
-
-
 
 <section id="testimonials">
   <div class="testimonial-heading">
@@ -115,5 +97,5 @@
                 </div>
             </div>
         </div>
-      <% end %>
+    <% end %>
 </section>
