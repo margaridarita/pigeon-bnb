@@ -1,18 +1,18 @@
 <div class="container pt-5 pl-3">
   <div class="grid-container">
     <% @pigeons.each do |pigeon| %>
-    <%= link_to pigeon_path(pigeon), style:"color:black" do %>
-      <div class="card">
-        <% if pigeon.photos.attached? %>
-          <div class="card-image" style="background-image:url('<%= pigeon.photos.first.url %>'); width:85%; height:65%">
+      <% if pigeon.available %>
+        <%= link_to pigeon_path(pigeon), style:"color:black" do %>
+          <div class="card">
+            <% if pigeon.photos.attached? %>
+              <div class="card-image" style="background-image:url('<%= pigeon.photos.first.url %>'); width:85%; height:65%">
+              </div>
+            <% end %>
+            <h2 class="title"><strong><%= pigeon.name %></strong></h2>
+            <span class="address"><%= pigeon.address %></span>
+            <span class="price"><strong><%= pigeon.price_per_day %> € </strong>day</span>
           </div>
-
-        <%# WHEN UPDATING THE CARDS, MAKE THE PHOTO FIT IT. I SUGGEST CARD FROM SECOND FRONT-END LIVE CODE %>
         <% end %>
-        <h2 class="title"><strong><%= pigeon.name %></strong></h2>
-        <span class="address"><%= pigeon.address %></span>
-        <span class="price"><strong><%= pigeon.price_per_day %> € </strong>day</span>
-      </div>
       <% end %>
     <% end %>
   </div>
