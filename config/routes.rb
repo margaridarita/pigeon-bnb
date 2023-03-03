@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get "/my-pigeons", to: "pages#my_pigeons"
   get "/map", to: "pigeons#map"
   resources :pigeons do
-    resources :bookings, only: %i[new create]
-    resources :reviews, only: %i[new index create]
+    resources :bookings, only: %i[index new create]
+    resources :reviews, only: %i[index new create]
   end
   resources :bookings, only: %i[edit update show destroy]
 end

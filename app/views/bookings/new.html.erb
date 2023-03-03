@@ -8,6 +8,13 @@
           <%= simple_form_for [@pigeon, @booking] do |f| %>
             <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
             <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+              <% if @booking.errors.any? %>
+                <div class="alert alert-danger">
+                  <% @booking.errors.full_messages.each do |message| %>
+                    <p><%= message %></p>
+                  <% end %>
+                </div>
+              <% end %>
             <%= f.submit class: 'btn btn-flat' %>
           <% end %>
         </div>
