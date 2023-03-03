@@ -21,10 +21,12 @@ class Booking < ApplicationRecord
   end
 
   def no_overlap
-    overlapping_bookings = pigeon.bookings.where.not(id: id).where("(start_date, end_date) OVERLAPS (?, ?)", start_date, end_date)
+    overlapping_bookings = pigeon.bookings
+      .where.not(id: id)
+      .where("(? BETWEEN start_date AND end_date) OR (? BETWEEN start_date AND end_date) OR (start_date BETWEEN ? AND ?) OR (end_date BETWEEN ? AND ?)", start_date, end_date, start_date, end_date, start_date, end_date)
 
     if overlapping_bookings.any?
       errors.add(:base, "Selected dates are already booked")
     end
-  end
+end
 end
