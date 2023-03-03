@@ -12,15 +12,29 @@
   margin-right: auto
 }
 
-.card-white {
-  justify-content: center;
-  width: 75%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 2px 2px 5px darkgrey;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 60px;
+.border-top {
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.border-reduced {
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.border-all {
+  border: 1px solid lightgrey;
+  padding: 30px;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.grey-box {
+  background-color: lightgrey;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  margin-right: 20px;
 }
