@@ -2,7 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   before_action :set_user, only: %i[dashboard my_pigeons my_bookings my_account]
 
-  def home; end
+  def home
+    @action_name = "home"
+  end
 
   def dashboard
     @sum = 0
