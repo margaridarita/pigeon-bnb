@@ -33,12 +33,14 @@
       <p class="mt-4"><%= @pigeon.description %></p>
     </div>
 
-    <div class="justify-content-end">
-      <% if @pigeon.user == current_user %>
-        <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
-        <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
-      <% end %>
-    </div>
+      <div class="justify-content-end">
+        <% if @pigeon.user == current_user %>
+          <p class="d-inline"><%= link_to "Edit", edit_pigeon_path(@pigeon), style:"color:#587368" %></p>
+          <p class="d-inline p-2"><%= link_to "Delete", pigeon_path(@pigeon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style:"color:#587368" %></p>
+          <p class="d-inline"><%= link_to "See bookings", pigeon_bookings_path(@pigeon), style:"color:#587368" %></p>
+        <% end %>
+      </div>
+
 
     <% unless @pigeon.user == current_user %>
       <div class="pt-5">
@@ -48,54 +50,52 @@
           <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
-     </div>
+      </div>
+      <div>
+        <h3 class="pb-2">Add a Review</h3>
+        <%= simple_form_for [@pigeon, @review] do |f| %>
+          <strong><%= f.input :rating, collection: (0..5) %></strong>
+          <strong><%= f.input :content %></strong>
+          <%= f.submit %>
+        <% end %>
+      </div>
     <% end %>
 
-    <div>
-      <h3 class="pb-2">Add a Review</h3>
-      <%= simple_form_for [@pigeon, @review] do |f| %>
-        <strong><%= f.input :rating, collection: (0..5) %></strong>
-        <strong><%= f.input :content %></strong>
-        <%= f.submit %>
-      <% end %>
+  </div>
+
+  <section id="testimonials">
+    <div class="testimonial-heading">
+      <span>Reviews</span>
     </div>
-
-  </div>
-
+      <% @pigeon.reviews.each do |r| %>
+          <!--testimonials-box-container------>
+          <div class="testimonial-box-container">
+              <!--BOX-1-------------->
+              <div class="testimonial-box">
+                  <!--top------------------------->
+                  <div class="box-top">
+                      <!--profile----->
+                      <div class="profile">
+                          <!--img---->
+                          <div class="profile-img">
+                              <img src="images/c-1.jpg" />
+                          </div>
+                          <!--name-and-username-->
+                          <div class="name-user">
+                              <strong><%= r.user.username %></strong>
+                          </div>
+                      </div>
+                      <!--reviews------>
+                      <div class="reviews">
+                          <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
+                      </div>
+                  </div>
+                  <!--Comments---------------------------------------->
+                  <div class="client-comment">
+                      <p><%= r.content %></p>
+                  </div>
+              </div>
+          </div>
+      <% end %>
+  </section>
 </div>
-
-<section id="testimonials">
-  <div class="testimonial-heading">
-    <span>Reviews</span>
-  </div>
-    <% @pigeon.reviews.each do |r| %>
-        <!--testimonials-box-container------>
-        <div class="testimonial-box-container">
-            <!--BOX-1-------------->
-            <div class="testimonial-box">
-                <!--top------------------------->
-                <div class="box-top">
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="profile-img">
-                            <img src="images/c-1.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong><%= r.user.username %></strong>
-                        </div>
-                    </div>
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"><%= '⭐️' * r.rating %></i>
-                    </div>
-                </div>
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p><%= r.content %></p>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</section>
