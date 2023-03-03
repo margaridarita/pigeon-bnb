@@ -1,0 +1,40 @@
+<div class="container pt-5 pl-3">
+    <%= link_to "< Back", :back, style:"color:#587368" %>
+<h1><%= @pigeon.name %>'s Bookings</h1>
+  <div>
+    <h2>Upcoming Bookings</h2>
+      <div class="grid-container pb-5 mb-3">
+          <% if @pigeon.bookings.check_date(@pigeon) %>
+            <% @pigeon.bookings.check_date.each do |booking| %>
+                <%= link_to edit_booking_path(booking), style:"color:black" do %>
+                  <div class="card">
+                    <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
+                    <h2 class="title"><strong><%= booking.start_date.strftime("%d %b. %Y") %> booking with <%= booking.user.username %></strong></h2>
+                  </div>
+              <% end %>
+            <% end %>
+            <% else %>
+              <p>No upcoming bookings Click <%= link_to "here", pigeons_path %> to discover our available pigeons.</p>
+            <% end %>
+      </div>
+    </div>
+
+  <div>
+<h2>Past Bookings</h2>
+      <div class="grid-container pb-5 mb-3">
+          <% if @pigeon.bookings.exists?  %>
+            <% @pigeon.bookings.each do |booking| %>
+              <% unless booking.start_date >= Date.today %>
+                  <div class="card">
+                    <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
+                    <h2 class="title"><strong><%= booking.start_date.strftime("%d %b. %Y") %> booking with <%= booking.user.username %>: €<%= booking.total_price %></strong></h2>
+                  </div>
+              <% end %>
+            <% end %>
+            <% else %>
+              <p>No upcoming bookings Click <%= link_to "here", pigeons_path %> to discover our available pigeons.</p>
+            <% end %>
+
+      </div>
+  </div>
+</div>
