@@ -2,6 +2,9 @@ class Booking < ApplicationRecord
   belongs_to :pigeon
   belongs_to :user
 
+  scope :before_today, -> { where(start_date: ..Date.today) }
+  scope :after_today, -> { where(start_date: Date.today..) }
+
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
   validate :no_overlap
@@ -15,13 +18,11 @@ class Booking < ApplicationRecord
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
 
-    if end_date < start_date
-      errors.add(:end_date, "must be after the start date")
-    end
+    errors.add(:end_date, "must be after the start date") if end_date < start_date
   end
 
   def no_overlap
-    overlapping_bookings = pigeon.bookings.where.not(id: id).where("(start_date, end_date) OVERLAPS (?, ?)", start_date, end_date)
+    overlapping_bookings = pigeon.bookings.where.not(id:).where("(start_date, end_date) OVERLAPS (?, ?)", start_date, end_date)
 
     if overlapping_bookings.any?
       errors.add(:base, "Selected dates are already booked")

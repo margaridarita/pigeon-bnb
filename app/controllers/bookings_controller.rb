@@ -40,10 +40,6 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path, status: :see_other
   end
 
-  def check_date(pigeon)
-    Booking.where(pigeon_id: pigeon.id && start_date <= Date.today)
-  end
-
   private
 
   def set_booking
