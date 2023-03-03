@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
+  validate :start_date_must_be_after_today
   validate :no_overlap
 
   def total_price_calc
@@ -17,6 +18,12 @@ class Booking < ApplicationRecord
 
     if end_date < start_date
       errors.add(:end_date, "must be after the start date")
+    end
+  end
+
+  def start_date_must_be_after_today
+    if start_date.present? && start_date < Date.today
+      errors.add(:start_date, "must be after today's date")
     end
   end
 
