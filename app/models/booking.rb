@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   scope :before_today, -> { where(start_date: ..Date.today) }
   scope :after_today, -> { where(start_date: Date.today..) }
 
-  validates :start_date, :end_date, presence: true
+  validates :start_date, :end_date, :address, presence: true
   validate :end_date_after_start_date
   validate :start_date_must_be_after_today
   validate :no_overlap
@@ -36,5 +36,5 @@ class Booking < ApplicationRecord
     if overlapping_bookings.any?
       errors.add(:base, "Selected dates are already booked")
     end
-end
+  end
 end
