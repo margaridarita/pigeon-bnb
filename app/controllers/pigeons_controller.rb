@@ -3,10 +3,19 @@ class PigeonsController < ApplicationController
 
   def index
     @pigeons = Pigeon.all
+
+    @markers = @pigeons.geocoded.map do |pigeon| {
+        lat: pigeon.latitude,
+        lng: pigeon.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {pigeon: pigeon}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def show
     @booking = Booking.new
+    @review = Review.new
   end
 
   def new
@@ -25,6 +34,10 @@ class PigeonsController < ApplicationController
   end
 
   def edit; end
+
+  def map
+    @action_name = "map"
+  end
 
   def update
     @pigeon.update(pigeon_params)
