@@ -1,12 +1,13 @@
 .footer {
   width: 100%;
-  background: #F4F4F4;
+  background: D5D1CE;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 80px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  font-size: 14px;
 }
 .footer-links {
   display: flex;
@@ -21,4 +22,5 @@
 }
 .footer-links a:hover {
   opacity: 1;
+  color: #587368;
 }

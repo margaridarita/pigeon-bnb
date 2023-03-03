@@ -56,6 +56,6 @@ class PigeonsController < ApplicationController
   end
 
   def pigeon_params
-    params.require(:pigeon).permit(:name, :description, :available, :price_per_day, photos: [])
+    params.require(:pigeon).permit(:name, :description, :available, :price_per_day, :category, photos: [])
   end
 end
