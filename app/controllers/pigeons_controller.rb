@@ -49,6 +49,10 @@ class PigeonsController < ApplicationController
     redirect_to my_pigeons_path, status: :see_other
   end
 
+  # def available?
+  #   @pigeon.available
+  # end
+
   private
 
   def set_pigeon

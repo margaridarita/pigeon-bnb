@@ -7,17 +7,23 @@ class PagesController < ApplicationController
   def dashboard
     @sum = 0
     @points = 0
+
     if @user.bookings.exists?
-      @user.pigeons.each do |pigeon|
-        b = Booking.where(pigeon_id: pigeon.id) if Booking.where(pigeon_id: pigeon.id).exists?
-          b.each do |bt|
-            @sum += bt.total_price
-          end
-        end
       @user.bookings.each do |b|
         @points += b.total_price
       end
     end
+
+    if @user.pigeons.exists?
+      @user.pigeons.each do |pigeon|
+        b = Booking.where(pigeon_id: pigeon.id)
+        b.each do |bt|
+          @sum += bt.total_price
+        end
+      end
+    end
+
+
   end
 
   def my_account; end

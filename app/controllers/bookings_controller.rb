@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_pigeon, only: %i[new create]
+  before_action :set_pigeon, only: %i[index new create]
+
+  def index
+    @bookings = Booking.all
+  end
 
   def show
   end
@@ -34,6 +38,10 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     redirect_to dashboard_path, status: :see_other
+  end
+
+  def check_date(pigeon)
+    Booking.where(pigeon_id: pigeon.id && start_date <= Date.today)
   end
 
   private
