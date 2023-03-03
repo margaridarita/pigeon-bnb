@@ -8,6 +8,8 @@
           <%= simple_form_for @booking do |f| %>
             <%= f.input :start_date, as: :date, html5: true, placeholder: @booking.start_date %>
             <%= f.input :end_date, as: :date, html5: true, placeholder: @booking.end_date %>
+            <%= f.input :address, placeholder: @booking.address%>
+            <%= f.input :request, placeholder: @booking.request%>
             <%= f.submit class: 'btn btn-flat' %>
           <% end %>
           <p><%= link_to "Cancel booking", booking_path(@booking), style:"color:black", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>

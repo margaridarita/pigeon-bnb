@@ -47,6 +47,8 @@
         <%= simple_form_for [@pigeon, @booking] do |f| %>
           <%= f.input :start_date, as: :date, html5: true, placeholder: 'Start date' %>
           <%= f.input :end_date, as: :date, html5: true, placeholder: 'End date' %>
+          <%= f.input :address, placeholder: 'Full address'%>
+          <%= f.input :request, placeholder: 'Write here any requests for the pigeon'%>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
       </div>
