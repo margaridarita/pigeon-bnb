@@ -1,9 +1,8 @@
-<div class="green-bg h-100">
+
   <div class="container pt-5 pl-3">
     <%= link_to "< Back", :back, style:"color:#587368" %>
-    <div class="card-white">
     <div class="d-flex justify-content-between">
-      <h1 class="pt-2">Your booking with <%= @booking.pigeon.name %> is confirmed.</h1>
+      <h1 class="pt-2">Booking rules</h1>
       <div class="d-flex flex-column">
       <% unless @booking.start_date <= Date.today %>
         <% if @booking.user == current_user || @booking.pigeon.user == current_user%>
@@ -13,14 +12,42 @@
       <% end %>
       </div>
     </div>
-      <p class="pt-3"><%= @booking.start_date.strftime("%d %b, %Y") %>  -  <%= @booking.end_date.strftime("%d %b, %Y") %></p>
-      <p><%= @booking.address %></p>
-      <img src="https://media2.giphy.com/media/GyKCVW91R83Ek/giphy.gif" class="img-resize">
-      <p class="pt-3">Owner: <%= @booking.pigeon.user.username %></p>
-      <div class="w-100 d-flex justify-content-between">
-        <h2>€<%= @booking.total_price %></h2>
-        <%= link_to "Back to #{@booking.pigeon.name}", pigeon_path(@booking.pigeon), class: "btn btn-flat" %>
+    <div class="d-flex flex-row justify-content-around">
+      <div class="d-flex flex-column col-7">
+        <img src="https://media2.giphy.com/media/GyKCVW91R83Ek/giphy.gif" class="img-resize">
+        <h3 class="pt-5"><%= @booking.pigeon.name%>'s <%= ((@booking.end_date - @booking.start_date) / 60 / 60 / 24).to_i %> day trip in <%= @booking.address %></h3>
+        <div class="d-flex flex-row pt-3">
+        <div class= "col-6 d-flex flex-row"><div class="grey-box"><p><%= @booking.start_date.strftime("%d") %></p>
+        <p><%= @booking.start_date.strftime("%b") %></p></div>
+        <p class="align pt-4">Checks-in <%= @booking.start_date.strftime("%A") %></p></div>
+        <div class= "col-6 d-flex flex-row"><div class="grey-box"><p><%= @booking.end_date.strftime("%d") %></p>
+        <p><%= @booking.end_date.strftime("%b") %></p></div>
+        <p class="align pt-4">Checks-out <%= @booking.start_date.strftime("%A") %></p></div>
+      </div>
+
+        <h3 class="border-top">Things to keep in mind</h3>
+        <p class="py-3 alert-info">Feeding our pigeons is strictly prohibited. Any violation of this rule will result in immediate and irreversible termination of your account.</p>
+
+        </div>
+        <div class="col-5">
+          <div class="border-all">
+            <h4 class="pt-2">Your booking with <%= @booking.pigeon.name %>.</h4>
+            <p>Private booking in <%= @booking.address %></p>
+            <p>Well reviewed</p>
+            <p class="pt-1 border-reduced"><%= @booking.start_date.strftime("%d %b, %Y") %>  ->  <%= @booking.end_date.strftime("%d %b, %Y") %></p>
+            <div class="d-flex flex-row justify-content-between border-reduced">
+              <p>€<%= @booking.pigeon.price_per_day.to_i %> x <%= ((@booking.end_date - @booking.start_date) / 60 / 60 / 24).to_i %> days</p>
+              <p>€<%= @booking.total_price %></p>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+              <p>No service fee</p>
+              <p>-</p>
+            </div>
+            <div class="d-flex flex-row justify-content-between border-reduced">
+              <p>Total (EUR)</p>
+              <p>€<%= @booking.total_price %></p>
+            </div>
+          </div>
+      </div>
       </div>
     </div>
-  </div>
-</div>
