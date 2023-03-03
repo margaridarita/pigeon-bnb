@@ -4,7 +4,7 @@ class Pigeon < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
 
-  validates :name, :description, :price_per_day, :category, presence: true
+  validates :name, :description, :address, :price_per_day, :category, presence: true
   validates :name, length: { maximum: 15 }
   validates :description, length: { maximum: 150 }
   validates :price_per_day, numericality: { greater_than_or_equal_to: 1 }

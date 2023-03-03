@@ -8,6 +8,7 @@
           <%= simple_form_for @pigeon do |f| %>
             <%= f.input :name, placeholder: @pigeon.name %>
             <%= f.input :description, placeholder: @pigeon.description %>
+            <%= f.input :address %>
             <%= f.input :available, placeholder: @pigeon.available %>
             <%= f.input :price_per_day, placeholder: @pigeon.price_per_day %>
             <%= f.submit class: 'btn btn-flat' %>

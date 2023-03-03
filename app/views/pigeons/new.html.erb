@@ -8,6 +8,7 @@
           <%= simple_form_for @pigeon do |f| %>
             <%= f.input :name, placeholder: 'First and last name' %>
             <%= f.input :description, placeholder: 'Skills and specialty' %>
+            <%= f.input :address %>
             <%= f.input :category, collection: ["Send a gift", "Baby sitting", "Company", "Music", "Private Detective", "Magic Tricks", "Poop", "Birthday Party", "Special Ocasions"], placeholder: 'Choose a category' %>
             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
             <%= f.input :available %>
