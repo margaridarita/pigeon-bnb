@@ -49,10 +49,6 @@ class PigeonsController < ApplicationController
     redirect_to my_pigeons_path, status: :see_other
   end
 
-  # def available?
-  #   @pigeon.available
-  # end
-
   private
 
   def set_pigeon
@@ -62,5 +58,4 @@ class PigeonsController < ApplicationController
   def pigeon_params
     params.require(:pigeon).permit(:name, :description, :available, :price_per_day, :category, photos: [])
   end
-
 end
