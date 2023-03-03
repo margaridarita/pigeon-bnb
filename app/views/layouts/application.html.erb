@@ -17,7 +17,11 @@
 
   <body>
     <div class="page-container">
+    <% if @action_name == "home" %>
+       <%= render "shared/home_navbar" %>
+    <% else %>
       <%= render "shared/navbar" %>
+    <% end %>
       <main id="main-content">
         <%= yield %>
       </main>

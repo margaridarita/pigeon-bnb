@@ -2,7 +2,11 @@ class PigeonsController < ApplicationController
   before_action :set_pigeon, only: %i[show edit update destroy]
 
   def index
-    @pigeons = Pigeon.all
+    if params[:query].present?
+      @pigeons = Pigeon.where(category: params[:query])
+    else
+      @pigeons = Pigeon.all
+    end
 
     @markers = @pigeons.geocoded.map do |pigeon| {
         lat: pigeon.latitude,

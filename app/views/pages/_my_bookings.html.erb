@@ -6,11 +6,18 @@
               <p>No upcoming bookings Click <%= link_to "here", pigeons_path %> to discover our available pigeons.</p>
             <% else %>
               <% Booking.where(user: @user).after_today.each do |booking| %>
+
                 <%= link_to edit_booking_path(booking), style:"color:black" do %>
-                  <div class="card">
-                    <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
-                    <h2 class="title"><strong><%= booking.start_date.strftime("%d %b. %Y") %> booking with <%= booking.user.username %></strong></h2>
+                   <div class="card">
+                      <div class="card-image" style="background-image:url('<%= booking.pigeon.photos.attached? ? booking.pigeon.photos.first.url : ""%>'); width:85%; height:65%">
+                      </div>
+
+                    <%# WHEN UPDATING THE CARDS, MAKE THE PHOTO FIT IT. I SUGGEST CARD FROM SECOND FRONT-END LIVE CODE %>
+                    <h2 class="title"><strong><%= booking.pigeon.name %></strong></h2>
+                    <span class="address"><%= booking.pigeon.address %></span>
+                    <span class="price"><strong><%= booking.pigeon.price_per_day %> € </strong>day</span>
                   </div>
+
               <% end %>
             <% end %>
             <% end %>
@@ -24,14 +31,21 @@
               <p>No past bookings Click <%= link_to "here", pigeons_path %> to discover our available pigeons.</p>
             <% else %>
               <% Booking.where(user: @user).before_today.each do |booking| %>
+
                 <%= link_to edit_booking_path(booking), style:"color:black" do %>
                   <div class="card">
-                    <%= image_tag("https://images.unsplash.com/photo-1607417190565-630353c3d223?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHBpZ2VvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", class:"pigeon-img") %>
-                    <h2 class="title"><strong><%= booking.start_date.strftime("%d %b. %Y") %> booking with <%= booking.user.username %></strong></h2>
+                      <div class="card-image" style="background-image:url('<%= booking.pigeon.photos.attached? ? booking.pigeon.photos.first.url : ""%>'); width:85%; height:65%">
+                      </div>
+
+                    <%# WHEN UPDATING THE CARDS, MAKE THE PHOTO FIT IT. I SUGGEST CARD FROM SECOND FRONT-END LIVE CODE %>
+                    <h2 class="title"><strong><%= booking.pigeon.name %></strong></h2>
+                    <span class="address"><%= booking.pigeon.address %></span>
+                    <span class="price"><strong><%= booking.pigeon.price_per_day %> € </strong>day</span>
                   </div>
               <% end %>
             <% end %>
             <% end %>
+      </div>
     </div>
   </div>
 </div>
