@@ -1,12 +1,15 @@
-
-  <div class="dash-card col-6">
-    <div class="flex-column">
-      <h2 class="pb-3">Personal info</h2>
-      <p class="pb-2">Email: <%= @user.email %></p>
-      <p class="pb-2">Username: <%= @user.username %></p>
-      <p class="pb-2">Password: ********</p>
+<div class="myaccount container pt-5 pl-3">
+  <div class="flex-column">
+    <div class="dashboard-card">
+          <div class="card-info">
+          <% if @user.photo.attached? %>
+            <div class="card-avatar"><%= cl_image_tag @user.photo.key %></div>
+            <% end %>
+              <div class="card-title"><%= @user.username %></div>
+            <div class="card-subtitle"><%= @user.email %></div>
+            <div class="d-flex justify-content-end"><%= link_to "Edit Account", edit_user_registration_path, class: 'btn btn-flat mt-5', style:"color:#587368" %></div>
+          </div>
     </div>
-    <div class="d-flex justify-content-end"><%= link_to "Edit Account", edit_user_registration_path, class: 'btn btn-flat' %></div>
   </div>
 
   <div class="dash-card col-6">
@@ -22,3 +25,4 @@
       <p class="pb-2">Looks like you haven't gotten any points! <%= link_to "Get earning", pigeons_path, style:"color:#587368" %> with Le Pigeon</p>
     <% end %>
   </div>
+</div>

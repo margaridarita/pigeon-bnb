@@ -1,7 +1,7 @@
 .dash-card {
   justify-content: center;
   width: 75%;
-  background-color: white;
+  background-color: #f5f5f5;
   padding: 20px;
   border-radius: 3px;
   box-shadow: 2px 2px 5px darkgrey;
@@ -17,4 +17,50 @@
 
  .nav-link .active {
   color: black;
+ }
+
+ /* My account */
+
+ .dashboard-card {
+  width: 190px;
+  height: 254px;
+  background: #f5f5f5;
+  padding: 2rem 1.5rem;
+  transition: box-shadow .3s ease, transform .2s ease;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px darkgrey;
+ }
+
+ .card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform .2s ease, opacity .2s ease;
+ }
+
+ .card-avatar {
+  --size: 60px;
+  background: linear-gradient(to top, #f1e1c1 0%, #fcbc97 100%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transition: transform .2s ease;
+  margin-bottom: 1rem;
+ }
+
+ .card-title {
+  color: black;
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 2rem;
+ }
+
+ .card-subtitle {
+  color: #859ba8;
+  font-size: 0.8em;
+ }
+
+ .myaccount {
+  display: flex;
  }
