@@ -3,7 +3,7 @@
     <div class="dashboard-card">
           <div class="card-info">
           <% if @user.photo.attached? %>
-            <div class="card-avatar"><%= cl_image_tag @user.photo.key %></div>
+            <%= cl_image_tag @user.photo.key, class: "avatar" %>
             <% end %>
               <div class="card-title"><%= @user.username %></div>
             <div class="card-subtitle"><%= @user.email %></div>
