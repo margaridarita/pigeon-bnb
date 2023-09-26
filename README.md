@@ -1,4 +1,4 @@
-## Public Poll
+## Pigeon BnB
 ![le_pigeon_logo](https://github.com/margaridarita/public-poll/assets/110779743/f39b81b7-0b95-4b03-bf4e-6a56203c90e2)
 
 This is a website like Airbnb but to book pigeons! 
