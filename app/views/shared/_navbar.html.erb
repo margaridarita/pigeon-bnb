@@ -8,15 +8,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-    <%= form_with url: pigeons_path, method: :get, class: "d-flex w-50 rounded" do %>
+    <%= form_with url: pigeons_path, method: :get, class: "d-flex w-25 rounded" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control p-2",
         placeholder: "Find a pigeon by category"
       %>
 
-      <%= submit_tag "search", class: "btn btn-primary" %>
+      <%= submit_tag "search", class: "btn btn-primary p-2" %>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
